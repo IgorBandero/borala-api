@@ -6,6 +6,7 @@ Link do deploy: https://borala-api.onrender.com
 ### Rotas
 
 - POST /user (Cria o registro de um novo usuário)
+- GET /user/:id (Busca no sistema um usuário pelo código do id)
 
 ## Como rodar o projeto 
 
