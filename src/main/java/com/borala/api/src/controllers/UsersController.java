@@ -25,8 +25,8 @@ public class UsersController {
         this.usersServices = usersServices;
     }
 
-    @PostMapping
-    public ResponseEntity<UserModel> createCustomer(@RequestBody @Valid UserDTO body) {        
+    @PostMapping("/signup")
+    public ResponseEntity<UserModel> createUser(@RequestBody @Valid UserDTO body) {        
         UserModel user = usersServices.save(body);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }    
