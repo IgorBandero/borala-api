@@ -3,13 +3,16 @@ package com.borala.api.src.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.borala.api.src.dtos.MailDTO;
 import com.borala.api.src.dtos.UserDTO;
+import com.borala.api.src.models.MailModel;
 import com.borala.api.src.models.UserModel;
 import com.borala.api.src.services.UsersServices;
 
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +28,13 @@ public class UsersController {
         this.usersServices = usersServices;
     }
 
+    @PostMapping("/mailto")
+    public ResponseEntity<MailModel> sendEmail(@RequestBody @Valid MailDTO body) {
+        //TODO: process POST request        
+        MailModel mail = usersServices.saveMail(body);
+        return ResponseEntity.status(HttpStatus.OK).body(mail);
+    }
+    
     @PostMapping("/signup")
     public ResponseEntity<UserModel> createUser(@RequestBody @Valid UserDTO body) {        
         UserModel user = usersServices.save(body);
