@@ -22,7 +22,7 @@ public class UserModel {
     public UserModel(UserDTO dto){
         this.nome = dto.getNome();
         this.email = dto.getEmail();
-        this.foto = dto.getFoto();
+        //this.foto = dto.getFoto();
         this.senha = dto.getSenha();
         /*this.sobrenome = dto.getSobrenome();
         this.idade = dto.getIdade();
