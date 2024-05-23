@@ -12,14 +12,15 @@ import com.borala.api.src.services.UsersServices;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
+@CrossOrigin(origins = "https://borala-api.onrender.com")
 @RequestMapping("/user")
 public class UsersController {
 
@@ -30,7 +31,6 @@ public class UsersController {
 
     @PostMapping("/mailto")
     public ResponseEntity<MailModel> sendEmail(@RequestBody @Valid MailDTO body) {
-        //TODO: process POST request        
         MailModel mail = usersServices.saveMail(body);
         return ResponseEntity.status(HttpStatus.OK).body(mail);
     }
