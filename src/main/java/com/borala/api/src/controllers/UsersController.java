@@ -43,7 +43,7 @@ public class UsersController {
     public ResponseEntity<String> sendEmail(@RequestBody @Valid MailDTO body) {
         try {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(body.getEmail());
+            mailMessage.setTo("borala.uni@gmail.com");
             mailMessage.setSubject(body.getNome());
             mailMessage.setText(body.getMensagem());
             javaMailSender.send(mailMessage);
