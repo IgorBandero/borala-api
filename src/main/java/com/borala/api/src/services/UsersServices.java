@@ -34,9 +34,9 @@ public class UsersServices {
     }
 
     public UserModel save(UserDTO dto){
-        if(usersRepository.existsByCpf(dto.getCpf())){
+        /*if(usersRepository.existsByCpf(dto.getCpf())){
             throw new UserConflictException("CPF já cadastrado!");
-        }
+        } */
         if(usersRepository.findByEmail(dto.getEmail()).isPresent()){
             throw new UserConflictException("E-mail já cadastrado!");
         }

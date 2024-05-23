@@ -9,6 +9,6 @@ import com.borala.api.src.models.UserModel;
 
 @Repository
 public interface UsersRepository extends JpaRepository<UserModel, Long> {
-    boolean existsByCpf(String cpf);
+    //boolean existsByCpf(String cpf);
     Optional<UserModel> findByEmail (String email);
 }
