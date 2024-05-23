@@ -12,7 +12,7 @@ public class UserDTO {
     private String nome;
 
     @NotBlank(message = "E-mail é obrigatório!")
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "E-mail inválido!")
+    //@Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "E-mail inválido!")
     private String email;
 
     //private byte[] foto;

@@ -2,6 +2,9 @@ package com.borala.api.src.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
 
 import com.borala.api.src.dtos.MailDTO;
 import com.borala.api.src.dtos.UserDTO;
@@ -11,6 +14,7 @@ import com.borala.api.src.services.UsersServices;
 
 import jakarta.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,10 +33,24 @@ public class UsersController {
         this.usersServices = usersServices;
     }
 
+    @Autowired
+    private JavaMailSender javaMailSender;
+
     @PostMapping("/mailto")
-    public ResponseEntity<MailModel> sendEmail(@RequestBody @Valid MailDTO body) {
-        MailModel mail = usersServices.saveMail(body);
-        return ResponseEntity.status(HttpStatus.OK).body(mail);
+    public ResponseEntity<String> sendEmail(@RequestBody @Valid MailDTO body) {
+        try {
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo("igorbandero@gmail.com");
+            mailMessage.setSubject(body.getNome());
+            mailMessage.setText(body.getMensagem());
+            javaMailSender.send(mailMessage);
+            return ResponseEntity.ok("E-mail enviado com sucesso!");
+        } catch (MailException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                .body("Erro ao enviar o e-mail: " + e.getMessage());
+        }
+        //MailModel mail = usersServices.saveMail(body);
+        //return ResponseEntity.status(HttpStatus.OK).body(mail);
     }
     
     @PostMapping("/signup")
