@@ -5,10 +5,13 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.borala.api.src.repositories.EmailRepository;
+
 @Service
 public class EmailService {
-    
+
     @Autowired
+    EmailRepository emailRepository;
     private JavaMailSender emailSender;
 
     public void sendSimpleMessage(String to, String subject, String text) {

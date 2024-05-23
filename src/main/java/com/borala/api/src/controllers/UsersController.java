@@ -44,14 +44,14 @@ public class UsersController {
         try {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setTo("borala.uni@gmail.com");
-            mailMessage.setSubject(body.getNome());
-            mailMessage.setText("Email: " + body.getEmail() + "\n" + body.getMensagem());
+            mailMessage.setSubject(body.getAssunto());
+            String message = "Nome: " + body.getNome() + "\n Email: " + body.getEmail() + "\n" + body.getMensagem();
+            mailMessage.setText(message);
             javaMailSender.send(mailMessage);
             //MailModel mail = usersServices.saveMail(body);
             return ResponseEntity.ok("E-mail enviado com sucesso!");
         } catch (MailException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                .body("Erro ao enviar o e-mail: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao enviar o e-mail: " + e.getMessage());
         }
         //return ResponseEntity.status(HttpStatus.OK).body(mail);
     }
