@@ -48,7 +48,7 @@ public class UsersController {
             mailMessage.setText("Email: " + body.getEmail() + "\n" + body.getMensagem());
             javaMailSender.send(mailMessage);
             //MailModel mail = usersServices.saveMail(body);
-            return ResponseEntity.OK("E-mail enviado com sucesso!");
+            return ResponseEntity.ok("E-mail enviado com sucesso!");
         } catch (MailException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                                 .body("Erro ao enviar o e-mail: " + e.getMessage());
