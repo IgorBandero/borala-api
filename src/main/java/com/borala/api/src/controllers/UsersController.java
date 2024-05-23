@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@CrossOrigin(origins = "https://borala-api.onrender.com")
+@CrossOrigin(origins = "*")
 @RequestMapping("/user")
 public class UsersController {
 
