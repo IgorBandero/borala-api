@@ -15,7 +15,7 @@ public class UserDTO {
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "E-mail inválido!")
     private String email;
 
-    private byte[] foto;
+    //private byte[] foto;
 
     @NotBlank(message = "Senha é obrigatória!")
     @Size(min = 8)

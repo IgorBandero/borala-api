@@ -45,8 +45,10 @@ public class UserModel {
     @Column(nullable = false, unique = true)
     private String email;
 
+    /* 
     @Column()
     private byte[] foto;
+    */
 
     @Column(nullable = false)
     private String senha;
