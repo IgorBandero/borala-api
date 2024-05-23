@@ -14,6 +14,8 @@ public class MailDTO {
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "E-mail inválido!")
     private String email;
 
+    private String assunto;
+
     @NotBlank(message = "Mensagem vazia!")
     private String mensagem;
 }

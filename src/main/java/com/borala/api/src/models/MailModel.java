@@ -22,6 +22,7 @@ public class MailModel {
     public MailModel(MailDTO dto){
         this.nome = dto.getNome();
         this.email = dto.getEmail();
+        this.assunto = dto.getAssunto();
         this.mensagem = dto.getMensagem();
     }
     
@@ -34,6 +35,9 @@ public class MailModel {
 
     @Column(nullable = false)
     private String email;
+
+    @Column()
+    private String assunto;
 
     @Column(nullable = false)
     private String mensagem;
